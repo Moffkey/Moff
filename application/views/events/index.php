@@ -1,11 +1,11 @@
 <?php require_once(__DIR__."/../header.php") ?>
 <h1>
+    タイトル
     <div class="event-owner-wrapper">
         <small id="event-owner">
             主催者:<img src="//api.surume.tk/misskey/icon/link/srtm/thumbnail" class="icon">しろたま(@srtm)
         </small>
     </div>
-    タイトル
     <small class="akari" id="event-owner-width"><?php /* モバイルでいい感じにするやつ(ロード後JavaScriptでevent-ownerの内容が入る) */ ?></small>
 </h1>
 <dl class="dl-horizontal">
