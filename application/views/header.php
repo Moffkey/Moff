@@ -48,6 +48,19 @@ $this->load->helper('url');
             .akari{
                 opacity:0;
             }
+            .event-owner-wrapper{
+                position:absolute;
+                right:0;
+                bottom:0;
+            }
+            h2 > span{
+                border-bottom: 2px solid black;
+                padding-right:1em;
+            }
+            h1 {
+                border-bottom: 2px solid black;
+                position:relative;
+            }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="//cdn.honokak.osaka/honoka/3.3.7/js/bootstrap.min.js"></script>
