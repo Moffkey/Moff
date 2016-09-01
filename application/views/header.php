@@ -12,6 +12,9 @@ $this->load->helper('url');
             .icon{
                 height:1em;
             }
+            .icon-kimoti-ookime{
+                height:1.2em;
+            }
             .icon-big{
                 width:3em;
                 height:3em;
@@ -60,6 +63,15 @@ $this->load->helper('url');
             h1 {
                 border-bottom: 2px solid black;
                 position:relative;
+            }
+            .vote-comment{
+                font-size:0.5em;
+            }
+            td,th{
+                vertical-align: middle !important;
+            }
+            td{
+                text-align:center;
             }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
