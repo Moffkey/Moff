@@ -12,3 +12,5 @@ vendor/
 composer.phar
 application/logs/
 application/config/database.php
+application/config/google_api_key_define.php
+application/config/id_and_screen_name_define.php
