@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends MY_Controller {
 
     public function __construct()
 	{
@@ -30,7 +30,7 @@ class Login extends CI_Controller {
             }
         } else
 
-		$this->load->view('login/index.php');
+		$this->load_view('login/index.php');
 	}
 
     public function auth($screen_name)
@@ -52,7 +52,7 @@ class Login extends CI_Controller {
 
         $data['screen_name'] = $screen_name;
 
-        $this->load->view('login/auth.php',$data);
+        $this->load_view('login/auth.php',$data);
     }
     public function regist(){
         $token = $this->input->get('token');
@@ -77,10 +77,13 @@ class Login extends CI_Controller {
             redirect('login/oops'); #セッションキーが何かおかしい時
         }
 
-        $this->load->view('login/regist.php',$data);
+        $this->load_view('login/regist.php',$data);
     }
     public function oops(){
-        $this->load->view('login/oops.php');
+        if($this->login_status()){
+            redirect('/');
+        }
+        $this->load_view('login/oops.php');
     }
     public function recaptcha_check()
     {
