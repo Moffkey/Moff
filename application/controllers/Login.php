@@ -28,7 +28,7 @@ class Login extends MY_Controller {
             if ($this->form_validation->run() == TRUE) {
                 redirect('login/auth/'.$this->input->post('screen_name'));
             }
-        } else
+        }
 
 		$this->load_view('login/index.php');
 	}

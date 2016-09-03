@@ -1,3 +1,5 @@
+<?php echo validation_errors(); ?>
+<div class="error"><?php echo $this->session->flashdata('error'); ?></div>
 <div class="form-group">
     <label for="inputName">イベント名</label>
     <input type="text" class="form-control" id="inputName" name="name">
@@ -34,7 +36,8 @@
     <label for="inputDeadLine">締め切り</label>
     <input type="date" class="form-control" id="inputDeadLine" required name="deadline">
 </div>
-
+<button type="submit" class="btn btn-success">イベントを登録</button>
+</form>
 <script>
 $(function(){
     var $description = $("#inputDescription");
