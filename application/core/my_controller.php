@@ -16,4 +16,10 @@ class MY_Controller extends CI_Controller {
             return true;
         }
     }
+
+    public function load_view($view_file, $data = array())
+    {
+        $data['isLogin'] = $this->login_status();
+        $this->load->view($view_file, $data);
+    }
 }

@@ -19,6 +19,10 @@ $this->load->helper('url');
                 width:3em;
                 height:3em;
             }
+            .icon-test{
+                width:5em;
+                height:5em;
+            }
             .comment{
                 position:relative;
             }
@@ -90,7 +94,13 @@ $this->load->helper('url');
                     <ul class="nav navbar-nav">
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?= site_url('user'); ?>">ユーザーページ</a>
+                        <?php if($isLogin){ ?>
+                                <li><a href="<?= site_url('user') ?>">
+                                    <?php echo icon_by_screen_name($this->session->userdata('screen_name')); ?>
+                                    ユーザーページ</a>
+                        <?php } else { ?>
+                                <li><a href="<?= site_url('login') ?>">ログイン</a>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
