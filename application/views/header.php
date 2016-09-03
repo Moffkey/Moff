@@ -73,6 +73,9 @@ $this->load->helper('url');
             td{
                 text-align:center;
             }
+            textarea{
+                resize:vertical;
+            }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="//cdn.honokak.osaka/honoka/3.3.7/js/bootstrap.min.js"></script>
