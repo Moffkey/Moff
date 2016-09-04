@@ -36,8 +36,6 @@
     <label for="inputDeadLine">締め切り</label>
     <input type="date" class="form-control" id="inputDeadLine" required name="deadline">
 </div>
-<button type="submit" class="btn btn-success">イベントを登録</button>
-</form>
 <script>
 $(function(){
     var $description = $("#inputDescription");
