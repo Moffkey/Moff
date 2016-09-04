@@ -6,6 +6,10 @@ class Events extends MY_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->helper('form');
+
+        $this->load->library('session');
+
+        $this->load->model('Event_model');
     }
     public function index()
     {
@@ -13,8 +17,13 @@ class Events extends MY_Controller {
     }
     public function detail($id)
     {
-        $data['val'] = $id;
-        $this->load_view('events/detail.php', $data);
+        if($Event = $this->Event_model->get_by_id($id))
+        {
+            $data['Events'] = $Event;
+            $this->load_view('events/detail.php', $data);
+        } else {
+            $this->load_view('events/_notfound.php');
+        }
     }
     public function create()
     {
@@ -34,6 +43,7 @@ class Events extends MY_Controller {
                     'thumbnail' => $this->input->post('thumbnail'),
                     'capacity' => $this->input->post('capacity'),
                     'deadline' => $this->input->post('deadline'),
+                    'created_by' => $this->session->userdata('screen_name'),
                 );
                 if($this->db->insert('events',$data)){
                     redirect('events/detail/'.$this->db->insert_id());
@@ -41,6 +51,7 @@ class Events extends MY_Controller {
                     $this->session->set_flashdata('edit_result', "{$this->_page_title}の登録に失敗しました。");
                 }
             }
+
         }
 
         $this->load_view('events/create.php');

@@ -1,6 +1,5 @@
 <?php echo validation_errors(); ?>
 <div class="error"><?php echo $this->session->flashdata('error'); ?></div>
-
 <?php echo form_open(''); ?>
 <div class="box-body">
 
