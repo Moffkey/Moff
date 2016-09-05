@@ -19,6 +19,8 @@ class Events extends MY_Controller {
     {
         if($Event = $this->Event_model->get_by_id($id))
         {
+            $this->load->model('Comment_model');
+            $data['Comments'] = $this->Comment_model->get_by_id($id);
             $data['Events'] = $Event;
             $this->load_view('events/detail.php', $data);
         } else {
@@ -55,6 +57,30 @@ class Events extends MY_Controller {
         }
 
         $this->load_view('events/create.php');
+    }
+    public function postcomment($id)
+    {
+        if($param = $this->input->post()){
+            $this->load->library('form_validation');
+            $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+            $this->form_validation->set_rules('text', '本文', 'trim|required|min_length[1]');
+
+            if ($this->form_validation->run() == TRUE) {
+                $data = array(
+                    'user' => $this->session->userdata('screen_name'),
+                    'event_id' => $id,
+                    'text' => $this->input->post('text'),
+                );
+                if($this->db->insert('event_comments',$data)){
+                    redirect('events/detail/'.$id);
+                }else{
+                    $this->session->set_flashdata('edit_result', "{$this->_page_title}の登録に失敗しました。");
+                    redirect('events/detail/'.$id);
+                }
+            }
+
+        }
+
     }
     public function edit()
     {

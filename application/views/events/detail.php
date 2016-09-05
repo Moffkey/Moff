@@ -62,29 +62,39 @@
     <?= $Events->description ?>
 </div>
 <h2><span>コメント</span></h2>
-<div class="comment">
-    <img src="//api.surume.tk/misskey/icon/link/srtm/thumbnail" class="icon-big">
-    <small class="comment-user">しろたま@srtm</small>
-    <small class="comment-time">2016/07/29</small>
-    <div class="comment-body">なんやこのイベント！</div>
-</div>
-<div class="comment">
-    <img src="//api.surume.tk/misskey/icon/link/surume/thumbnail" class="icon-big">
-    <small class="comment-user">スルメ@surume</small>
-    <small class="comment-time">2016/07/29</small>
-    <div class="comment-body">そうだよ（便乗）</div>
-</div>
-<div class="comment comment-input">
-    <img src="//api.surume.tk/misskey/icon/link/surume/thumbnail" class="icon-big">
-    <small class="comment-user">スルメ@surume</small>
+<?php if(!empty($Comments)) { ?>
+    <?php foreach($Comments as $Comment) { ?>
+    <div class="comment">
+    <img src="//api.surume.tk/misskey/icon/link/<?= $Comment->user ?>/thumbnail" class="icon-big">
+    <small class="comment-user">@<?= $Comment->user?></small>
+    <small class="comment-time"><?= $Comment->created_at?></small>
+    <div class="comment-body"><?= $Comment->text ?></div>
+    </div>
+    <?php } ?>
+<?php } ?>
+
+<?php if($isLogin) { ?>
+    <?php echo validation_errors(); ?>
+    <div class="error"><?php echo $this->session->flashdata('error'); ?></div>
+    <?php echo form_open('events/postcomment/'.$Events->id); ?>
+    <div class="comment comment-input">
+    <img src="//api.surume.tk/misskey/icon/link/<?= $this->session->userdata('screen_name') ?>/thumbnail" class="icon-big">
+    <small class="comment-user">@<?= $this->session->userdata('screen_name') ?></small>
     <div class="comment-body">
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" name='text'></textarea>
         <div class="row">
             <div class="col-sm-8"></div>
-            <div class="col-sm-4"><button class="btn btn-primary" style="width:100%;"><i class="fa fa-paper-plane"></i> コメントする</button></div>
+            <div class="col-sm-4"><button type="submit" class="btn btn-primary" style="width:100%;"><i class="fa fa-paper-plane"></i>コメントする</button></div>
         </div>
     </div>
-</div>
+    </div>
+    </form>
+<?php } else {?>
+    <h1>コメントするにはログインする必要があります。 </h1>
+    <?php echo anchor('login/', '俺より強い奴に会いに行く', array('class' => 'btn btn-success')) ?>
+    <div style='height:20px;'></div>
+<?php } ?>
+
 <script>
 $(function(){
     $("#event-owner-width").html($("#event-owner").html());
