@@ -1,9 +1,9 @@
 <?php require_once(__DIR__."/../header.php") ?>
 <h1>
-    タイトル
+    <?= $Events->title; ?>
     <div class="event-owner-wrapper">
         <small id="event-owner">
-            主催者:<img src="//api.surume.tk/misskey/icon/link/srtm/thumbnail" class="icon">しろたま(@srtm)
+            主催者:<img src="//api.surume.tk/misskey/icon/link/<?= $Events->created_by ?>/thumbnail" class="icon">@<?= $Events->created_by ?>
         </small>
     </div>
     <small class="akari" id="event-owner-width"><?php /* モバイルでいい感じにするやつ(ロード後JavaScriptでevent-ownerの内容が入る) */ ?></small>
@@ -12,7 +12,7 @@
     <dt>ハッシュタグ
         <dd><a href="https://search.misskey.link/?q=%23hoge">#hoge</a>
     <dt>定員
-        <dd>810人
+        <dd><?= $Events->capacity ? $Events->capacity.'人' : "なし"  ; ?>
     <dt>参加希望者
         <dd>8人
             <img src="//api.surume.tk/misskey/icon/link/srtm/thumbnail" class="icon">
@@ -59,7 +59,7 @@
 </div>
 <h2><span>説明</span></h2>
 <div class="description">
-    ここに説明文が入る
+    <?= $Events->description ?>
 </div>
 <h2><span>コメント</span></h2>
 <div class="comment">
