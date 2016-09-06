@@ -1,5 +1,17 @@
 <?php echo validation_errors(); ?>
 <div class="error"><?php echo $this->session->flashdata('error'); ?></div>
+<div class="alert alert-warning" id="not-working">ご利用のブラウザは動作対象外です。PC/Androidでご利用になる場合は<a href="https://www.google.co.jp/chrome/browser/desktop/">Google Chrome</a>(及びその姉妹ブラウザ)もしくは<a href="https://www.microsoft.com/ja-jp/windows/microsoft-edge">Microsoft Edge</a>、もしくはiOS端末をご利用ください。</div>
+<script>
+$(function(){
+    var ua = navigator.userAgent.toLowerCase();
+    var supported = false;
+    if(ua.indexOf("chrome") !== -1) supported = true;
+    if(ua.indexOf("iphone") !== -1) supported = true;
+    if(ua.indexOf("ipad") !== -1) supported = true;
+    if(ua.indexOf("ipod") !== -1) supported = true;
+    if(supported) $("#not-working").hide();
+})
+</script>
 <div class="form-group">
     <label for="inputName">イベント名</label>
     <input type="text" class="form-control" id="inputName" name="name">
