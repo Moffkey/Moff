@@ -52,6 +52,7 @@ $(function(){
             $input.attr("type","hidden");
             $input.attr("name","candidate_date[]");
             $input.val(indate);
+            $li.append($input);
             $(this).parent().children("ul").append($li)
         })
     })
