@@ -80,6 +80,18 @@ $this->load->helper('url');
             textarea{
                 resize:vertical;
             }
+            .icon-menu{
+                position:absolute;
+                left:-0.5em;
+                top:-0.5em;
+                width:2.5em;
+                height:2.5em;
+            }
+            .icon-menu-wrap{
+                position:relative;
+                display:inline-block;
+                width:2.5em;
+            }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="//cdn.honokak.osaka/honoka/3.3.7/js/bootstrap.min.js"></script>
@@ -99,8 +111,7 @@ $this->load->helper('url');
                     <ul class="nav navbar-nav navbar-right">
                         <?php if($isLogin){ ?>
                                 <li><a href="<?= site_url('user') ?>">
-                                    <?php echo icon_by_screen_name($this->session->userdata('screen_name')); ?>
-                                    ユーザーページ</a>
+                                    <?php echo icon_by_screen_name($this->session->userdata('screen_name')); ?>ユーザーページ</a>
                         <?php } else { ?>
                                 <li><a href="<?= site_url('login') ?>">ログイン</a>
                         <?php } ?>

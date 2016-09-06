@@ -10,7 +10,7 @@ if ( ! function_exists('img_src_by_id'))
 	function icon_by_screen_name($screen_name)
 	{
         if (!empty($screen_name)) {
-            $url = '<img src="//api.surume.tk/misskey/icon/link/'.$screen_name.'/thumbnail" class="icon">';
+            $url = '<span class="icon-menu-wrap"><img src="//api.surume.tk/misskey/icon/link/'.$screen_name.'/thumbnail" class="icon-menu">&nbsp;</span>';
             return $url;
         }
         return '';
