@@ -13,7 +13,7 @@ class Events extends MY_Controller {
     }
     public function index()
     {
-        $this->load_view('events/index.php', $data);
+        $this->load_view('events/index.php');
     }
     public function detail($id)
     {
