@@ -25,6 +25,7 @@
             <img src="//api.surume.tk/misskey/icon/link/srtm/thumbnail" class="icon">
 </dl>
 <h2><span>日にち候補</span></h2>
+<?php if(!empty($Dates)) { ?>
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr>
@@ -35,19 +36,21 @@
             <td><img src="//api.surume.tk/misskey/icon/link/srtm/thumbnail" class="icon-kimoti-ookime">
             <td>You
                 <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i></button>
-        <?php /* 日ごと */ ?>
-        <tr>
-            <th>114/514 19:19〜
-            <td>1人
-            <td>0人
-            <td>0人
-            <td><i class="fa fa-circle-o event-mark"></i>
-            <td>
-                <div class="btn-group"  data-toggle="buttons">
-                    <label class="btn btn-default"><input type="radio" value=1><i class="fa fa-circle-o "></i></button></label>
-                    <label class="btn btn-default"><input type="radio" value=2><i class="fa fa-question "></i></button></label>
-                    <label class="btn btn-default"><input type="radio" value=3><i class="fa fa-times"></i></button></label>
-                </div>
+            <?php foreach($Dates as $key => $date) { ?>
+            <tr>
+                <th><?= $date['date'] ?>
+                <td>1人
+                <td>0人
+                <td>0人
+                <td><i class="fa fa-circle-o event-mark"></i>
+                <td>
+                    <div class="btn-group"  data-toggle="buttons">
+                        <label class="btn btn-default"><input type="radio" value=1><i class="fa fa-circle-o "></i></button></label>
+                        <label class="btn btn-default"><input type="radio" value=2><i class="fa fa-question "></i></button></label>
+                        <label class="btn btn-default"><input type="radio" value=3><i class="fa fa-times"></i></button></label>
+                    </div>
+            <?php } ?>
+
         <tr>
             <td>コメント
             <td>
@@ -55,8 +58,11 @@
             <td>
             <td class="vote-comment">なんやこのイベント！
             <td><input type="text" class="form-control">
-    </table>
-</div>
+            </table>
+            </div>
+<?php } else { ?>
+    未設定！ｗ
+<?php } ?>
 <h2><span>説明</span></h2>
 <div class="description">
     <?= $Events->description ?>

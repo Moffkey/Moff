@@ -21,5 +21,16 @@ class Event_model extends MY_Model
         }
     }
 
+    public function get_candidate_date_by_id($id){
+        $query = $this->db->from('candidate_date')
+            ->where('event_id', $id)
+            ->get();
+        if($query->num_rows() >= 1){
+            $results = $query->result_array();
+            return $results;
+        }else{
+            return false;
+        }
+    }
 
 }

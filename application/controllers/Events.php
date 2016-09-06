@@ -22,6 +22,7 @@ class Events extends MY_Controller {
             $this->load->model('Comment_model');
             $data['Comments'] = $this->Comment_model->get_by_id($id);
             $data['Events'] = $Event;
+            $data['Dates'] = $this->Event_model->get_candidate_date_by_id($id);
             $this->load_view('events/detail.php', $data);
         } else {
             $this->load_view('events/_notfound.php');
@@ -48,7 +49,16 @@ class Events extends MY_Controller {
                     'created_by' => $this->session->userdata('screen_name'),
                 );
                 if($this->db->insert('events',$data)){
-                    redirect('events/detail/'.$this->db->insert_id());
+                    $id = $this->db->insert_id();
+                    $dates = $this->input->post('candidate_date');
+                    foreach($dates as $date){
+                        $data = array(
+                            'event_id' => $id,
+                            'date' => $date,
+                        );
+                        $this->db->insert('candidate_date',$data);
+                    }
+                    redirect('events/detail/'.$id);
                 }else{
                     $this->session->set_flashdata('edit_result', "{$this->_page_title}の登録に失敗しました。");
                 }
