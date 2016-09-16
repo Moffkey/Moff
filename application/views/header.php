@@ -92,6 +92,21 @@ $this->load->helper('url');
                 display:inline-block;
                 width:2.5em;
             }
+            .qube-event-wrapper{
+                background-size:cover;
+                width:8em;
+                height:8em;
+                position:relative;
+                display:inline-block;
+            }
+            .qube-event{
+                position:absolute;
+                bottom:0;
+                left:0;
+                right:0;
+                background:rgba(0,0,0,0.75);
+                color:white;
+            }
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="//cdn.honokak.osaka/honoka/3.3.7/js/bootstrap.min.js"></script>
